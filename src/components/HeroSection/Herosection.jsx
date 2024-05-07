@@ -9,7 +9,7 @@ function Herosection() {
     <div
       className="py-28 w-full"
       style={{
-        backgroundImage: "url('./src/assets/images/BackGround.png')",
+        backgroundImage: "url('/images/BackGround.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

@@ -3,7 +3,7 @@ import React from "react";
 function Logo({ height = "8" }) {
   return (
     <img
-      src="src\assets\images\Zomato-Logo.png"
+      src="/images/Zomato-Logo.png"
       alt="Zomato Logo"
       className={`h-${height} w-auto`}
     />

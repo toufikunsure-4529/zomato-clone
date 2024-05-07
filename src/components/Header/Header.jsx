@@ -15,6 +15,7 @@ function Header() {
     <div className=" w-full md:absolute fixed top-0 left-0 z-[99] mb-20 ">
       <div className="md:flex justify-between items-center py-4 px-7 md:px-24">
         <div className="flex cursor-pointer items-center">
+          {/* <Logo height="8" /> */}
           <Logo />
         </div>
 

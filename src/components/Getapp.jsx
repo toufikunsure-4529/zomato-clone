@@ -7,7 +7,7 @@ function Getapp() {
         <div className="w-full h-auto flex justify-center items-center gap-10 ">
           <div className="w-1/2 md:flex justify-end gap-6 hidden md:visible">
             <img
-              src="src\assets\images\Iphone.png"
+              src="/images/Iphone.png"
               alt="Iphone Images"
               className="w-2/3"
             />
@@ -50,11 +50,8 @@ function Getapp() {
                   Download app from
                 </p>
                 <div className="flex md:w-1/5 w-1/3 gap-3 items-center">
-                  <img
-                    src="src\assets\images\Google-Play.png"
-                    alt="Google-Play"
-                  />
-                  <img src="src\assets\images\App-Store.png" alt="App-Store" />
+                  <img src="/images/Google-Play.png" alt="Google-Play" />
+                  <img src="/images/App-Store.png" alt="App-Store" />
                 </div>
               </div>
             </div>

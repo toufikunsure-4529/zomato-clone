@@ -10,7 +10,7 @@ function CardOrder() {
             <div>
               <div>
                 <img
-                  src="src\assets\images\Online-Food.png"
+                  src="/images/Online-Food.png"
                   alt="Online-Food"
                   className=" w-full  h-36 pb-2"
                 />
