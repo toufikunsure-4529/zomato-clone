@@ -2,8 +2,6 @@ import { MapPinIcon } from "@heroicons/react/24/solid";
 
 import React from "react";
 
-import Logo from "../Logo";
-
 function Herosection() {
   return (
     <div
@@ -16,7 +14,11 @@ function Herosection() {
       }}
     >
       <div className="max-w-4xl mx-auto flex flex-col justify-center items-center gap-7 px-5">
-        <Logo height="14" />
+        <img
+          src="/images/Zomato-Logo.png"
+          alt="Zomato Logo"
+          className={`h-14 w-auto`}
+        />{" "}
         <h1 className="md:text-4xl text-2xl text-white text-center mb-4">
           Discover the best food & drinks in Chhindwara
         </h1>
