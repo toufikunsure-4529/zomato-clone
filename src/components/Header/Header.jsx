@@ -1,18 +1,21 @@
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleModal } from "../../store/LoginSlice";
 import Logo from "../Logo";
 function Header() {
   const Links = [
     { name: "Investor Relations", link: "#" },
     { name: "Add resturant", link: "#" },
-    { name: "Log in", link: "#" },
+    { name: "Log in", link: "#", action: () => dispatch(toggleModal()) },
     { name: "Sign up", link: "#" },
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
-
+  const modalIsOpen = useSelector((state) => state.login.modalIsOpen);
+  const dispatch = useDispatch();
   return (
-    <div className=" w-full md:absolute fixed top-0 left-0 z-[99] mb-20 ">
+    <div className=" w-full md:absolute fixed top-0 left-0 z-[99] mb-20 bg-red-800 md:bg-transparent ">
       <div className="md:flex justify-between items-center py-4 px-7 md:px-24">
         <div className="flex cursor-pointer items-center">
           {/* <Logo height="8" /> */}
@@ -37,6 +40,7 @@ function Header() {
             <li
               className="text-xl my-7 md:my-0 md:ml-8 transition-all duration-200 ease-in"
               key={link.name}
+              onClick={link.action}
             >
               <a href={link.link}>{link.name}</a>
             </li>

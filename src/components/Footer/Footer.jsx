@@ -44,11 +44,15 @@ function Footer() {
   ];
 
   return (
-    <div className="w-full bg-[#F8F8F8] py-5">
+    <div className="w-full bg-[#F8F8F8] pt-5">
       <Container>
         <div>
           <div className="flex justify-between items-center">
-            <img src="/images/blackLogo.webp" alt="Zomato Logo" />
+            <img
+              src="/images/blackLogo.webp"
+              alt="Zomato Logo"
+              className="md:h-10 h-8 w-auto"
+            />
             <div className=" flex md:flex-row flex-col gap-3">
               <select
                 name="cities"
@@ -101,11 +105,22 @@ function Footer() {
           </div>
           <div className="mt-6">
             <hr className="my-6 " />
-            <p className="text-gray-500">
+            <p className="text-gray-500 text-center md:text-left">
               By continuing past this page, you agree to our Terms of Service,
               Cookie Policy, Privacy Policy and Content Policies. All trademarks
-              are properties of their respective owners. 2008-2024 © Designed
-              and Developed By Toufik. All rights reserved.
+              are properties of their respective owners. 2008-2024 All rights
+              reserved.
+            </p>
+            <p className="text-center text-gray-600 mt-3 md:mt-0">
+              © Designed and Developed By{" "}
+              <a
+                href="#"
+                target="_blank"
+                className="text-blue-500 hover:underline"
+              >
+                Toufik
+              </a>
+              .
             </p>
           </div>
         </div>

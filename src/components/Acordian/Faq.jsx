@@ -120,17 +120,19 @@ function Acordian() {
   };
 
   return (
-    <div className="bg-[#FCFCFC] w-full">
+    <div className="bg-[#FCFCFC] w-full md:px-16 px-0">
       <Container>
         <div className="">
-          <h2 className="text-3xl font-semibold text-gray-600">Explore options near me</h2>
+          <h2 className="text-2xl font-semibold text-gray-700">
+            Explore options near me
+          </h2>
           {faqData.map((data) => (
             <div className="mt-6" key={data.id}>
               <div
-                className="w-full border-b-0  bg-white h-20 rounded-lg rounded-b-none shadow-sm flex items-center px-5 text-gray-600 cursor-pointer justify-between mt-8 "
+                className="w-full border-b-0  bg-white h-16 rounded-lg rounded-b-none shadow-sm flex items-center px-5 text-gray-600 cursor-pointer justify-between mt-6 "
                 onClick={() => faqToggle(data.id)}
               >
-                <p className="text-2xl">{data.title}</p>
+                <p className="text-xl">{data.title}</p>
                 {isFaqOpen === data.id ? (
                   <MinusCircleIcon className="h-6 w-6" />
                 ) : (

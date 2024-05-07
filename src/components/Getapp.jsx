@@ -39,9 +39,9 @@ function Getapp() {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="h-12 w-2/4 border rounded-md px-3 mr-2 outline-none"
+                  className="h-12 md:w-2/4 border rounded-md px-3 mr-2 outline-none"
                 />
-                <button className="bg-red-400 text-white px-5 py-3 rounded-lg">
+                <button className="bg-red-400 text-white px-5 md:py-3 py-2 rounded-lg mt-2">
                   Share App Link
                 </button>
               </div>

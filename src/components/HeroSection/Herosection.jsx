@@ -17,9 +17,9 @@ function Herosection() {
         <img
           src="/images/Zomato-Logo.png"
           alt="Zomato Logo"
-          className={`h-14 w-auto`}
+          className={`md:h-14 h-8 w-auto`}
         />{" "}
-        <h1 className="md:text-4xl text-2xl text-white text-center mb-4">
+        <h1 className="md:text-4xl text-xl text-white text-center mb-4">
           Discover the best food & drinks in Chhindwara
         </h1>
         <div className="bg-white h-14 w-full flex gap-2 rounded-lg shadow-lg border-l-8 border-red-600">
@@ -27,7 +27,7 @@ function Herosection() {
             <input
               type="text"
               placeholder="Kolkata"
-              className="h-full w-full px-8 rounded-md outline-none"
+              className="h-full w-full px-8 pr-0 rounded-md outline-none"
             />
             <MapPinIcon className="h-7 w-7 text-red-400 absolute" />
           </div>

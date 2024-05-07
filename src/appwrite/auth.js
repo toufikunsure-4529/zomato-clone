@@ -1,4 +1,5 @@
 import { Account, Client, ID } from "appwrite";
+import { toast } from "react-toastify";
 import conf from "../conf/conf";
 
 class AuthService {
@@ -24,7 +25,6 @@ class AuthService {
       const user = await this.account.createVerification('http://localhost:5173/verify')
     } catch (error) {
       console.log("Error: userVerification", error.message)
-
     }
   }
 
@@ -33,7 +33,7 @@ class AuthService {
       const session = await this.account.createEmailSession(email, password)
       return session
     } catch (error) {
-      console.log("Error: createSession", error.message)
+      toast.error(error.message)
 
     }
   }
