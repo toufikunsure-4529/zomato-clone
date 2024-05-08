@@ -1,14 +1,18 @@
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toggleModal } from "../../store/LoginSlice";
-import Logo from "../Logo";
+import { toggleSignupModal } from "../../store/signupSlice";
 function Header() {
   const Links = [
     { name: "Investor Relations", link: "#" },
-    { name: "Add resturant", link: "#" },
-    { name: "Log in", link: "#", action: () => dispatch(toggleModal()) },
-    { name: "Sign up", link: "#" },
+    {
+      name: "Add resturant",
+      link: "#",
+    },
+    { name: "Log in", action: () => dispatch(toggleModal()) },
+    { name: "Sign up", action: () => dispatch(toggleSignupModal()) },
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -19,7 +23,11 @@ function Header() {
       <div className="md:flex justify-between items-center py-4 px-7 md:px-24">
         <div className="flex cursor-pointer items-center">
           {/* <Logo height="8" /> */}
-          <Logo />
+          <img
+            src="/images/Zomato-Logo.png"
+            alt="Zomato Logo"
+            className={`h-7 w-auto`}
+          />
         </div>
 
         {/* MOBILE SCREEN VIEW BUTTON */}
@@ -42,7 +50,7 @@ function Header() {
               key={link.name}
               onClick={link.action}
             >
-              <a href={link.link}>{link.name}</a>
+              <Link to={link.link}>{link.name}</Link>
             </li>
           ))}
         </ul>

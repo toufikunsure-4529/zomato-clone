@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import authServiceAppwrite from "../appwrite/auth";
 import { toggleModal } from "../store/LoginSlice";
@@ -12,20 +13,26 @@ function Login() {
 
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
-  const [error, setError] = useState(null);
+  const navigator = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
   const [isLoading, setIsLoading] = useState(false);
 
   const login = async (data) => {
-    setError("");
     setIsLoading(true);
     try {
       const session = await authServiceAppwrite.createSession(data);
       if (session) {
         toast.success("Login Successfully");
+        reset();
+        navigator(dispatch(toggleModal()));
+        navigator("/");
       }
     } catch (error) {
-      setError(error.message);
       toast.error(error.message);
     } finally {
       setIsLoading(false);
@@ -57,8 +64,10 @@ function Login() {
 
                 <div className="flex items-center justify-center">
                   <div className="mt-3 text-center sm:text-left w-full">
-                    {error && (
-                      <p className="text-red-500 text-center mt-8">{error}</p>
+                    {errors && (
+                      <p className="text-red-500 text-center">
+                        Please fill out all fields correctly.
+                      </p>
                     )}
                     <form
                       onSubmit={handleSubmit(login)}
@@ -68,6 +77,7 @@ function Login() {
                         placeholder="Email"
                         type="email"
                         className="mb-2"
+                        label="Email"
                         {...register("email", {
                           required: "true",
                           validate: {
@@ -79,6 +89,7 @@ function Login() {
                       />
                       <Input
                         type="password"
+                        label="Password"
                         placeholder="Enter your password"
                         {...register("password", {
                           required: true,

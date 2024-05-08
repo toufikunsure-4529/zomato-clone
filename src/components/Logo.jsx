@@ -3,9 +3,9 @@ import React from "react";
 function Logo() {
   return (
     <img
-      src="/images/Zomato-Logo.png"
+      src="/images/blackLogo.webp"
       alt="Zomato Logo"
-      className={`h-8 w-auto`}
+      className={`h-6 w-auto`}
     />
   );
 }

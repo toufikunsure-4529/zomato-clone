@@ -13,7 +13,13 @@ function Getapp() {
             />
           </div>
           <div className="md:w-1/2 w-full flex flex-col justify-center gap-2 md:h-screen bg-green-200 shadow-2xl shadow-green-300 rounded-md pl-10 pt-4 pb-6 md:pt-0 md:pb-0">
-            <h1 className="text-black md:text-4xl text-3xl font-semibold mb-6">
+            <img
+              src="/images/blackLogo.webp"
+              alt="Zomato Logo"
+              className={`md:w-36 w-20`}
+            />{" "}
+            
+            <h1 className="text-black md:text-2xl text-xl font-semibold md:mb-6 mb-3">
               Get the Zomato app
             </h1>
             <p className="text-gray-600 mb-6">

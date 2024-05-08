@@ -10,12 +10,13 @@ class AuthService {
     this.account = new Account(this.client)
   }
 
-  async createAccount({ email, password, name }) {
+  async createAccount({ email, password, name, gender, phone }) {
     try {
-      const userAccount = await this.account.create(ID.unique(), email, password, name)
+      const userAccount = await this.account.create(ID.unique(), email, password, name, { phone, gender })
+
       return userAccount
     } catch (error) {
-      console.log("Error: createAccount", error.message)
+      toast.error(error.message)
     }
   }
 
@@ -31,6 +32,7 @@ class AuthService {
   async createSession({ email, password }) {
     try {
       const session = await this.account.createEmailSession(email, password)
+
       return session
     } catch (error) {
       toast.error(error.message)

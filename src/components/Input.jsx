@@ -16,6 +16,7 @@ function Input({ label, type = "text", className = "", ...props }, ref) {
         {...props}
         ref={ref}
         id={id}
+        autocomplete="off"
       />
     </div>
   );
