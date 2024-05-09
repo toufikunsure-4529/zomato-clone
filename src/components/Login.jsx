@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import authServiceAppwrite from "../appwrite/auth";
 import { toggleModal } from "../store/LoginSlice";
+import { login as storeLogin } from "../store/authSlice";
 import Button from "./Button";
 import Input from "./Input";
 
@@ -27,9 +28,13 @@ function Login() {
     try {
       const session = await authServiceAppwrite.createSession(data);
       if (session) {
+        const userData = await authServiceAppwrite.getCurrentUser(); //get current user information
+        if (userData) {
+          dispatch(storeLogin({ userData })); //to call store from auth status change to true and pass userData store
+        }
+        navigator(dispatch(toggleModal()));
         toast.success("Login Successfully");
         reset();
-        navigator(dispatch(toggleModal()));
         navigator("/");
       }
     } catch (error) {
@@ -63,7 +68,7 @@ function Login() {
                 </div>
 
                 <div className="flex items-center justify-center">
-                  <div className="mt-3 text-center sm:text-left w-full">
+                  <div className="mt-3  sm:text-left w-full">
                     {errors && (
                       <p className="text-red-500 text-center">
                         Please fill out all fields correctly.

@@ -27,6 +27,8 @@ function Herosection() {
             <input
               type="text"
               placeholder="Kolkata"
+              value="Kolkata"
+              readOnly
               className="h-full w-full px-8 pr-0 rounded-md outline-none"
             />
             <MapPinIcon className="h-7 w-7 text-red-400 absolute" />

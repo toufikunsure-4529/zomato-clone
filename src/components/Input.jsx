@@ -12,11 +12,11 @@ function Input({ label, type = "text", className = "", ...props }, ref) {
       )}
       <input
         type={type}
-        className={`px-4 py-2 h-16 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border w-full ${className}`}
+        className={`px-4 py-2 h-12 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border w-full ${className}`}
         {...props}
         ref={ref}
         id={id}
-        autocomplete="off"
+        autoComplete="off"
       />
     </div>
   );

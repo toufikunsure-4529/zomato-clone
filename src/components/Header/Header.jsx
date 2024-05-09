@@ -4,15 +4,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleModal } from "../../store/LoginSlice";
 import { toggleSignupModal } from "../../store/signupSlice";
+import UserPhoto from "./UserPhoto";
 function Header() {
+  const authStatus = useSelector((state) => state.auth.status);
   const Links = [
-    { name: "Investor Relations", link: "#" },
+    { name: "Investor Relations", link: "#", active: true },
     {
       name: "Add resturant",
-      link: "#",
+      link: "/add-resturant",
+      active: true,
     },
-    { name: "Log in", action: () => dispatch(toggleModal()) },
-    { name: "Sign up", action: () => dispatch(toggleSignupModal()) },
+    {
+      name: "Log in",
+      action: () => dispatch(toggleModal()),
+      active: !authStatus,
+    },
+    {
+      name: "Sign up",
+      action: () => dispatch(toggleSignupModal()),
+      active: !authStatus,
+    },
   ];
 
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -44,15 +55,22 @@ function Header() {
             isNavOpen ? "top-0" : "top-[-490px] "
           }`}
         >
-          {Links.map((link) => (
-            <li
-              className="text-xl my-7 md:my-0 md:ml-8 transition-all duration-200 ease-in"
-              key={link.name}
-              onClick={link.action}
-            >
-              <Link to={link.link}>{link.name}</Link>
+          {Links.map((link) =>
+            link.active ? (
+              <li
+                className="text-xl my-7 md:my-0 md:ml-8 transition-all duration-200 ease-in"
+                key={link.name}
+                onClick={link.action}
+              >
+                <Link to={link.link}>{link.name}</Link>
+              </li>
+            ) : null
+          )}
+          {authStatus && (
+            <li className="md:ml-8 ml-0 flex">
+              <UserPhoto />
             </li>
-          ))}
+          )}
         </ul>
       </div>
     </div>

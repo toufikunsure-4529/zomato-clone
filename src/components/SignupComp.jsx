@@ -43,7 +43,7 @@ function SignupComp() {
     <>
       <div>
         {signUpModalOpen && (
-          <div className="fixed  inset-0 overflow-y-auto z-[999]">
+          <div className="fixed  inset-0 overflow-y-auto z-[1] md:z-[999] mt-10 md:mt-0  ">
             <div className="flex items-center justify-center min-h-screen text-center sm:block gap-10">
               {/* Background overlay */}
               <div className="fixed inset-0 transition-opacity">
@@ -69,7 +69,7 @@ function SignupComp() {
                   </div>
 
                   <div className="flex items-center justify-center">
-                    <div className="mt-3 text-center sm:text-left w-full">
+                    <div className="mt-3 r sm:text-left w-full">
                       {errors && (
                         <p className="text-red-500 text-center">
                           Please fill out all fields correctly.
