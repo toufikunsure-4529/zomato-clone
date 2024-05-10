@@ -1,12 +1,20 @@
-import React from "react";
-import CardOrder from "../CardOrder";
-import Herosection from "../HeroSection/Herosection";
+import React, { useEffect } from "react";
+
+import DocumentsList from "./DocumentsList";
+import PartnerQna from "./PartnerQna";
+import ResturantHeroSection from "./ResturantHeroSection";
+import HowItWork from "./HowItWork";
 
 function AddResturant() {
+  useEffect(() => {
+    document.title = "Add a resturant - Zomato";
+  }, []);
   return (
     <div>
-      <Herosection />
-      <CardOrder />
+      <ResturantHeroSection />
+      <DocumentsList />
+      <PartnerQna />
+      <HowItWork />
     </div>
   );
 }
