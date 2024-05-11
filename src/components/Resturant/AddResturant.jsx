@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-
+import "../../App.css";
+import Clients from "./Clients";
 import DocumentsList from "./DocumentsList";
-import PartnerQna from "./PartnerQna";
-import ResturantHeroSection from "./ResturantHeroSection";
 import HowItWork from "./HowItWork";
+import PartnerQna from "./PartnerQna";
+import ProductsCursolCard from "./ProductsCursolCard";
+import ResturantHeroSection from "./ResturantHeroSection";
 import SearchResturat from "./SearchResturat";
-
 function AddResturant() {
   useEffect(() => {
     document.title = "Add a resturant - Zomato";
@@ -17,6 +18,8 @@ function AddResturant() {
       <PartnerQna />
       <HowItWork />
       <SearchResturat />
+      <ProductsCursolCard />
+      <Clients />
     </div>
   );
 }
