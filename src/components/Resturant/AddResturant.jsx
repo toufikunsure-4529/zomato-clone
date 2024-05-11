@@ -4,6 +4,7 @@ import DocumentsList from "./DocumentsList";
 import PartnerQna from "./PartnerQna";
 import ResturantHeroSection from "./ResturantHeroSection";
 import HowItWork from "./HowItWork";
+import SearchResturat from "./SearchResturat";
 
 function AddResturant() {
   useEffect(() => {
@@ -15,6 +16,7 @@ function AddResturant() {
       <DocumentsList />
       <PartnerQna />
       <HowItWork />
+      <SearchResturat />
     </div>
   );
 }
