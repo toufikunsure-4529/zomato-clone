@@ -27,9 +27,9 @@ function BugIssueForm() {
       }}
     >
       <Container>
-        <div className="max-w-5xl mx-auto py-6 px-5 flex justify-center items-center gap-6">
-          <div className="w-1/2 pl-14">
-            <h3 className="text-gray-800 text-4xl font-semibold mb-6 leading-10 ">
+        <div className="max-w-5xl mx-auto py-6 px-5 flex justify-center items-center gap-6 md:flex-row flex-col">
+          <div className="md:w-1/2 w-full md:pl-14 pl-0 text-center md:text-left">
+            <h3 className="text-gray-800 md:text-4xl text-xl font-semibold mb-6 leading-10 ">
               Cannot find your favourite restaurant on Zomato?
             </h3>
             <p className="text-gray-700 ">
@@ -38,7 +38,7 @@ function BugIssueForm() {
           </div>
           {loading ? (
             <div
-              className="bg-yellow-200 text-yellow-800 p-4 w-1/2 rounded"
+              className="bg-yellow-200 text-yellow-800 p-4 md:w-1/2 w-full rounded"
               role="alert"
             >
               <h1 className="font-semibold text-black">
@@ -47,7 +47,7 @@ function BugIssueForm() {
               </h1>
             </div>
           ) : (
-            <div className="bg-white w-1/2 rounded-md shadow-lg px-6 py-10">
+            <div className="bg-white md:w-1/2 w-full rounded-md shadow-lg px-6 py-10">
               <form
                 className="flex flex-col justify-center items-center gap-3"
                 onSubmit={handleSubmit(submitForm)}

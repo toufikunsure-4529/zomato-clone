@@ -43,16 +43,18 @@ function ResturantFaq() {
     <div className="w-full bg-white">
       <Container>
         <div className="max-w-4xl mx-auto py-6 px-2">
-          <h2 className="text-4xl font-semibold text-gray-700 text-center mb-12">
+          <h2 className="md:text-4xl text-2xl font-semibold text-gray-700 text-center mb-12">
             Frequently asked questions
           </h2>
           {FaqArray.map((faq, index) => (
             <div className="mt-2 bg-white rounded-md" key={index}>
               <div
-                className="h-10 w-full border px-4 py-8 flex items-center justify-between shadow border-gray-100 rounded-md  cursor-pointer"
+                className="md:h-10 h-full w-full border md:px-4 md:py-8 py-4 px-2 flex items-center justify-between shadow border-gray-100 rounded-md  cursor-pointer"
                 onClick={() => toggleFaq(index)}
               >
-                <h2 className="text-gray-600 text-xl">{faq.faqQuestion}</h2>
+                <h2 className="text-gray-600 md:text-xl text-sm">
+                  {faq.faqQuestion}
+                </h2>
                 {isFaqOpen === index ? (
                   <MinusCircleIcon className="h-6 w-6" />
                 ) : (

@@ -14,7 +14,9 @@ function StartJurney() {
               className="w-full md:h-full h-96 object-cover"
             />
             <div className="absolute top-0 text-gray-100 px-8 py-10 mx-auto text-center md:text-left">
-              <h3 className="text-4xl mb-4">Start your journey with Zomato</h3>
+              <h3 className="md:text-4xl text-2xl mb-4">
+                Start your journey with Zomato
+              </h3>
               <p className="text-md mb-4">
                 Create your restaurant page and register for online ordering
               </p>

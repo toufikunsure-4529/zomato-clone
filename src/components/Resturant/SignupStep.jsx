@@ -31,11 +31,11 @@ function SignupStep() {
   return (
     <div className="w-full bg-white">
       <Container>
-        <div className="max-w-4xl mx-auto py-5 px-5 flex flex-col justify-center gap-4">
-          <h2 className="text-4xl font-semibold text-gray-800">
+        <div className="max-w-5xl mx-auto py-5 px-5 flex flex-col justify-center gap-4">
+          <h2 className="md:text-4xl text-xl font-semibold text-gray-800">
             What do you get on sign-up
           </h2>
-          <p className="text-xl text-gray-500">
+          <p className="md:text-xl text-sm text-gray-500">
             Zomato Partner Platform helps you take your business to new heights
             instantly with no hassle and 100% transparency!
           </p>
@@ -66,7 +66,7 @@ function SignupStep() {
                       {index + 1}
                     </div>
                     <h3
-                      className={`text-2xl  font-semibold ${
+                      className={`md:text-2xl text-xl  font-semibold ${
                         hoveredIndex === index
                           ? "text-blue-500"
                           : "text-gray-600"
@@ -75,8 +75,10 @@ function SignupStep() {
                       {item.title}
                     </h3>
                   </div>
-                  <div className="w-full ml-12">
-                    <p className="text-gray-400 text-xl">{item.desc}</p>
+                  <div className="w-full md:ml-12 ml-6">
+                    <p className="text-gray-400 md:text-xl text-sm">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
               ))}
