@@ -1,8 +1,10 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../Button";
 import Container from "../container/Container";
 
 function ResturantHeroSection() {
+  const navigate = useNavigate();
   return (
     <div
       className="py-20 w-full"
@@ -23,7 +25,12 @@ function ResturantHeroSection() {
             select cities.
           </p>
           <div className="flex gap-4 md:flex-row flex-col">
-            <Button className="">Register your restaurant</Button>
+            <Link
+              className="px-4 py-3 rounded-md bg-blue-500 text-white"
+              to="/add-resturant/create-your-res"
+            >
+              Register your restaurant
+            </Link>
             <Button bgColor="bg-white" textColor="text-gray-800">
               View your existing restaurant
             </Button>

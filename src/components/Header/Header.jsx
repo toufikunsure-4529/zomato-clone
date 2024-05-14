@@ -34,11 +34,14 @@ function Header() {
       <div className="md:flex justify-between items-center py-4 px-7 md:px-24">
         <div className="flex cursor-pointer items-center">
           {/* <Logo height="8" /> */}
-          <img
-            src="/images/Zomato-Logo.png"
-            alt="Zomato Logo"
-            className={`h-7 w-auto`}
-          />
+          <Link to="/">
+            {" "}
+            <img
+              src="/images/Zomato-Logo.png"
+              alt="Zomato Logo"
+              className={`h-7 w-auto`}
+            />
+          </Link>
         </div>
 
         {/* MOBILE SCREEN VIEW BUTTON */}
