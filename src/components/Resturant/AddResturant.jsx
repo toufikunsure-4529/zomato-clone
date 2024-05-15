@@ -15,6 +15,8 @@ function AddResturant() {
   useEffect(() => {
     document.title = "Add a resturant - Zomato";
   }, []);
+
+
   return (
     <div>
       <ResturantHeroSection />

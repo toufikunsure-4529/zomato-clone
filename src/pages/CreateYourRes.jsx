@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CreateResturant from "../components/Resturant/CreateFormRes/CreateResturant";
+import Createresturant from "../components/Resturant/Components-Resturant/CreateResturant";
 
 function CreateYourRes() {
   useEffect(() => {
@@ -10,7 +10,7 @@ function CreateYourRes() {
 
   return (
     <>
-      <CreateResturant />
+      <Createresturant />
       <ToastContainer />
     </>
   );
