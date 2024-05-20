@@ -12,6 +12,7 @@ import Layout from "./Layout.jsx";
 import AddResturant from "./components/Resturant/AddResturant.jsx";
 import "./index.css";
 import CreateYourRes from "./pages/CreateYourRes.jsx";
+import OrderOnline from "./pages/OrderOnline.jsx";
 import store from "./store/Store.js";
 
 const router = createBrowserRouter(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
         path="/add-resturant/create-your-res"
         element={<CreateYourRes />}
       />
+      <Route path="/order" element={<OrderOnline />} />
     </Route>
   )
 );

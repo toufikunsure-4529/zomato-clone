@@ -31,7 +31,7 @@ function FormAddRes() {
         ? await dbServices.uploadFoodImg(data.image[0])
         : null;
       if (file) {
-        const fileId = file.$id;
+        const fileId = file.$id; //to set userCreate time id as image id future to find who uploaded
         data.featuredImageId = fileId;
 
         // Add new food entry to the database
@@ -182,13 +182,13 @@ function FormAddRes() {
             />
             <Input
               placeholder="Slug"
+              className="cursor-not-allowed"
               readOnly
               {...register("slug", { required: true })}
               onInput={(e) => {
                 setValue("slug", slugTransform(e.target.value), {
                   shouldValidate: true,
                 });
-                readOnly;
               }}
             />
             <Input

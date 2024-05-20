@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 import authServiceAppwrite from "../appwrite/auth";
 import { toggleModal } from "../store/LoginSlice";
 import { login as storeLogin } from "../store/authSlice";
@@ -26,14 +27,19 @@ function Login() {
   const login = async (data) => {
     setIsLoading(true);
     try {
-      const session = await authServiceAppwrite.createSession(data);
+      const session = await authServiceAppwrite.createSession(data); //login session
       if (session) {
         const userData = await authServiceAppwrite.getCurrentUser(); //get current user information
         if (userData) {
           dispatch(storeLogin({ userData })); //to call store from auth status change to true and pass userData store
         }
         navigator(dispatch(toggleModal()));
-        toast.success("Login Successfully");
+        Swal.fire({
+          title: "Good job!",
+          text: "Logged in successfully!",
+          icon: "success",
+        });
+        // toast.success("Login Successfully");
         reset();
         navigator("/");
       }
