@@ -15,13 +15,15 @@ function FormAddRes() {
   const addToSubmitData = async (data) => {
     setLoading(true);
     if (!userData) {
-      toast.error("Please Login to Add Registration");
+      toast.warn("Please Login to continue");
+      setLoading(false);
       return;
     }
 
     // Validation check
     if (!data.foodName || !data.description || !data.price) {
       toast.error("Please fill out all required fields");
+      setLoading(false);
       return;
     }
 

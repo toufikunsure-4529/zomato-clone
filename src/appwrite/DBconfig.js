@@ -43,6 +43,20 @@ export class DatabaseServices {
   }
 
 
+  //get all food textual content
+  async getZomatoFood() {
+    try {
+      return await this.database.listDocuments(conf.appwriteDatabaseId, conf.appwriteCollectionId, [])
+    } catch (error) {
+      toast.error(error.message)
+
+    }
+  }
+
+  getFoodImgPreview(fileId) {
+    return this.storage.getFilePreview(conf.appwriteBucketId, fileId)
+  }
+
 }
 
 const dbServices = new DatabaseServices()

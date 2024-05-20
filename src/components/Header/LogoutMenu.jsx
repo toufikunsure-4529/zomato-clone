@@ -10,11 +10,14 @@ function LogoutMenu() {
   const navigate = useNavigate();
   const logout = async () => {
     try {
-      const sessionDeleted = await authServiceAppwrite.deleteSessions();
-      if (sessionDeleted) {
-        dispatch(storeLogout());
-        toast.success("Logout Successfully");
-        navigate("/");
+      const confirmation = confirm("Are you sure logout this session?");
+      if (confirmation) {
+        const sessionDeleted = await authServiceAppwrite.deleteSessions();
+        if (sessionDeleted) {
+          dispatch(storeLogout());
+          toast.success("Logout Successfully");
+          navigate("/");
+        }
       }
     } catch (error) {
       toast.error(error.message);
