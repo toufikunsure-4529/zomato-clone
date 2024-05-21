@@ -11,6 +11,7 @@ import App from "./App.jsx";
 import Layout from "./Layout.jsx";
 import AddResturant from "./components/Resturant/AddResturant.jsx";
 import "./index.css";
+import Cart from "./pages/Cart.jsx";
 import CreateYourRes from "./pages/CreateYourRes.jsx";
 import OrderOnline from "./pages/OrderOnline.jsx";
 import store from "./store/Store.js";
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
         element={<CreateYourRes />}
       />
       <Route path="/order" element={<OrderOnline />} />
+      <Route path="/cart" element={<Cart />} />
     </Route>
   )
 );

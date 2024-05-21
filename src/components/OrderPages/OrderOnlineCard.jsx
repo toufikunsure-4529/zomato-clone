@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import dbServices from "../../appwrite/DBconfig";
-import Container from "../container/Container";
+import { addToCart } from "../../store/cartSlice";
 import Loading from "../Loading";
+import Container from "../container/Container";
 
 function OrderOnlineCard() {
   const [foodData, setFoodData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  const authStatus = useSelector((state) => state.auth.status);
+
   useEffect(() => {
     dbServices
       .getZomatoFood()
@@ -16,7 +23,17 @@ function OrderOnlineCard() {
       })
       .finally(() => setLoading(false));
   }, []);
-  console.log(foodData);
+
+  const addCart = (cartData) => {
+    const { price, foodName, featuredImageId } = cartData; //this cart data pass when onclick to method call
+    if (authStatus === false) {
+      toast.warn("Please Login to continue");
+    } else {
+      dispatch(addToCart({ price, foodName, featuredImageId }));
+      toast.success("Successfully added");
+    }
+  };
+
   return (
     <div className="w-full bg-white">
       <Container>
@@ -56,7 +73,9 @@ function OrderOnlineCard() {
                         {data.foodName}
                       </h3>
                       <div>
-                        <p className="text-xs text-gray-500">Resturant Name</p>
+                        <p className="text-xs text-gray-500">
+                          {data.resturantName}
+                        </p>
                         <p className="text-sm text-gray-500">
                           {data.resturantLocality}
                         </p>
@@ -76,7 +95,10 @@ function OrderOnlineCard() {
                         <button className="border px-3 bg-green-600 rounded">
                           1
                         </button>
-                        <button className="border px-3 bg-green-600 rounded">
+                        <button
+                          className="border px-3 bg-green-600 rounded"
+                          onClick={() => addCart(data)}
+                        >
                           +
                         </button>
                       </div>

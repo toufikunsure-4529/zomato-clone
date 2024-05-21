@@ -49,6 +49,12 @@ function Login() {
       setIsLoading(false);
     }
   };
+
+  const handleModal = () => {
+    dispatch(toggleModal());
+    dispatch(toggleSignupModal());
+  };
+
   return (
     <div>
       {modalIsOpen && (
@@ -121,13 +127,13 @@ function Login() {
                       <p className="mt-2 text-left text-base text-black/60">
                         {" "}
                         Don&apos;t have any account?&nbsp;
-                        <a
-                          href="/signup"
+                        <p
+                          onClick={handleModal}
                           className="font-medium text-primary transition-all duration-200 hover:underline"
                         >
                           {" "}
                           Sign Up
-                        </a>
+                        </p>
                       </p>
                     </form>
                   </div>

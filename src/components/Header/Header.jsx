@@ -1,12 +1,18 @@
-import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import {
+  Bars3BottomRightIcon,
+  ShoppingCartIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleModal } from "../../store/LoginSlice";
 import { toggleSignupModal } from "../../store/signupSlice";
+
 import UserPhoto from "./UserPhoto";
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
+
   const Links = [
     { name: "Investor Relations", link: "#", active: true },
     {
@@ -23,6 +29,12 @@ function Header() {
       name: "Sign up",
       action: () => dispatch(toggleSignupModal()),
       active: !authStatus,
+    },
+    {
+      name: "Cart",
+      link: "/cart",
+      active: authStatus,
+      icon: <ShoppingCartIcon className="h-8 w-8 text-blue-500" />,
     },
   ];
 
@@ -65,7 +77,10 @@ function Header() {
                 key={link.name}
                 onClick={link.action}
               >
-                <Link to={link.link}>{link.name}</Link>
+                <span className="flex gap-1">
+                  {link.icon ? <div>{link.icon}</div> : ""}
+                  <Link to={link.link}>{link.name}</Link>
+                </span>
               </li>
             ) : null
           )}
