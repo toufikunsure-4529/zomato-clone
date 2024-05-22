@@ -29,6 +29,31 @@ export class DatabaseServices {
     }
   }
 
+  //userData address collection data save [NOTE: DOCUMENTS ID SET USER userID WHILE CREATING TIME GENERATE]
+  async updateUserData({ name, email, address, district, state, pincode, phone, userId }) {
+    try {
+      return await this.database.createDocument(conf.appwriteDatabaseId, conf.appwriteUserCollectionId, userId, { name, email, address, district, state, pincode, phone, userId })
+    } catch (error) {
+      toast.error("An error occurred while updating the profile");
+    }
+
+  }
+
+  async getUserData(userId) {
+    try {
+      const response = await this.database.listDocuments(
+        conf.appwriteDatabaseId,
+        conf.appwriteUserCollectionId,
+        [`equal("userId", "${userId}")`] //ACTUAL LOGIN USER ID TO COLLECTION USER ID ARE SAME TO SHOW THIS INFORMATION TO APPWRITE QUERY WRITE
+      );
+      return response;
+    } catch (error) {
+      toast.error(error.message);
+      throw error;
+    }
+  }
+
+
 
   //Bucket Storage for uploaded images
   async uploadFoodImg(file) {

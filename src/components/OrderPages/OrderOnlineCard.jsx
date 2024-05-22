@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import dbServices from "../../appwrite/DBconfig";
 import { addToCart } from "../../store/cartSlice";
@@ -10,6 +11,7 @@ function OrderOnlineCard() {
   const [foodData, setFoodData] = useState([]);
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const authStatus = useSelector((state) => state.auth.status);
 
@@ -30,7 +32,10 @@ function OrderOnlineCard() {
       toast.warn("Please Login to continue");
     } else {
       dispatch(addToCart({ price, foodName, featuredImageId }));
-      toast.success("Successfully added");
+      toast.success("Cart added Successfully");
+      setTimeout(() => {
+        navigate("/cart");
+      }, 2000);
     }
   };
 
@@ -47,7 +52,7 @@ function OrderOnlineCard() {
             <div className="grid md:grid-cols-3 grid-cols-1 md:gap-5 gap-2">
               {foodData.map((data, index) => (
                 <div
-                  className={`border border-gray-50 hover:border-gray-200 overflow-hidden rounded-xl hover:shadow-xl  w-80 h-auto px-3 py-3 ${
+                  className={`border border-gray-50 hover:border-gray-200 overflow-hidden rounded-xl hover:shadow-xl w-full md:w-80 h-auto px-3 py-3 ${
                     data.status === "unavailable"
                       ? "pointer-events-none grayscale"
                       : ""
