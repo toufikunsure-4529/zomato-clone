@@ -39,6 +39,16 @@ export class DatabaseServices {
 
   }
 
+
+  async createOrder({ orderId, featuredImageId, name, price, quantity, totalPrice, userId }) {
+    try {
+      return await this.database.createDocument(conf.appwriteDatabaseId, conf.appwriteOrderCollectionId, userId, { orderId, featuredImageId, name, price, quantity, totalPrice, userId })
+    }
+    catch (error) {
+      console.log(error.message)
+    }
+  }
+
   async getUserData(userId) {
     try {
       const response = await this.database.listDocuments(

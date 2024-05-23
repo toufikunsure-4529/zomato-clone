@@ -111,58 +111,60 @@ function Cart() {
                   </tbody>
                 </table>
                 {/* Cart Total price show end */}
+
+                <div className="flex w-full justify-center items-center md:flex-row flex-col-reverse">
+                  <div className={`${isAddress ? "md:w-1/2 w-full" : ""}`}>
+                    {isAddress && <UpdateAddress />}
+                  </div>
+                  {/* summary invoice */}
+                  <div
+                    className={`bg-gray-100 rounded-lg p-4 ${
+                      isAddress ? "" : "w-full"
+                    }`}
+                  >
+                    <p className="text-lg font-semibold mb-4">Order Summary</p>
+                    <div className="flex justify-between mb-2">
+                      <p>
+                        Total Price{" "}
+                        <span className="text-green-600">20% off</span>
+                      </p>
+                      <p>₹{totalPrice}.00</p>
+                    </div>
+                    <div className="flex justify-between mb-2">
+                      <p>Delivery Charge</p>
+                      <p>₹20</p>
+                    </div>
+                    <div className="flex justify-between mb-2">
+                      <p>
+                        Extra Discount{" "}
+                        <span className="text-green-600">Flat 10% off</span>
+                      </p>
+                      <p>₹10</p>
+                    </div>
+                    <div className="flex justify-between border-t pt-2">
+                      <p className="font-semibold">Total amount Payable</p>
+                      <p className="font-semibold">
+                        <span className="text-green-600 line-through">
+                          ₹{totalPrice + 20 + 10}
+                        </span>{" "}
+                        <span className="text-green-600">10% off </span>₹
+                        {totalAmountPay}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-center">
+                  <Button
+                    bgColor="bg-orange-500"
+                    className={`py-1 mt-2 mb-2 ${isAddress ? "hidden" : ""}`}
+                    onClick={handleUserAddress}
+                  >
+                    Procced to buy
+                  </Button>
+                </div>
               </div>
             )}
-            <div className="flex w-full justify-center items-center md:flex-row flex-col-reverse">
-              <div className={`${isAddress ? "md:w-1/2 w-full" : ""}`}>
-                {isAddress && <UpdateAddress />}
-              </div>
-              {/* summary invoice */}
-              <div
-                className={`bg-gray-100 rounded-lg p-4 ${
-                  isAddress ? "" : "w-full"
-                }`}
-              >
-                <p className="text-lg font-semibold mb-4">Order Summary</p>
-                <div className="flex justify-between mb-2">
-                  <p>
-                    Total Price <span className="text-green-600">20% off</span>
-                  </p>
-                  <p>₹{totalPrice}.00</p>
-                </div>
-                <div className="flex justify-between mb-2">
-                  <p>Delivery Charge</p>
-                  <p>₹20</p>
-                </div>
-                <div className="flex justify-between mb-2">
-                  <p>
-                    Extra Discount{" "}
-                    <span className="text-green-600">Flat 10% off</span>
-                  </p>
-                  <p>₹10</p>
-                </div>
-                <div className="flex justify-between border-t pt-2">
-                  <p className="font-semibold">Total amount Payable</p>
-                  <p className="font-semibold">
-                    <span className="text-green-600 line-through">
-                      ₹{totalPrice + 20 + 10}
-                    </span>{" "}
-                    <span className="text-green-600">10% off </span>₹
-                    {totalAmountPay}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center">
-              <Button
-                bgColor="bg-orange-500"
-                className={`py-1 mt-2 mb-2 ${isAddress ? "hidden" : ""}`}
-                onClick={handleUserAddress}
-              >
-                Procced to buy
-              </Button>
-            </div>
           </div>
         </Container>
       </div>

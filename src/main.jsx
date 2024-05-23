@@ -15,6 +15,7 @@ import "./index.css";
 import Cart from "./pages/Cart.jsx";
 import CreateYourRes from "./pages/CreateYourRes.jsx";
 import OrderOnline from "./pages/OrderOnline.jsx";
+import OrderSuccess from "./pages/OrderSuccess.jsx";
 import Payment from "./pages/Payment.jsx";
 import store from "./store/Store.js";
 
@@ -33,6 +34,9 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/payment" element={<PaymentLayout />}>
         <Route path="" element={<Payment />} />
+      </Route>
+      <Route path="/ordersuccess" element={<PaymentLayout />}>
+        <Route path="" element={<OrderSuccess />} />
       </Route>
     </>
   )
