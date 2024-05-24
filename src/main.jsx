@@ -8,8 +8,10 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import App from "./App.jsx";
+import AdminLayout from "./AppLayout/AdminLayout.jsx";
 import PaymentLayout from "./AppLayout/PaymentLayout.jsx";
 import Layout from "./Layout.jsx";
+import Dashboard from "./admin/components/Dashboard.jsx";
 import AddResturant from "./components/Resturant/AddResturant.jsx";
 import "./index.css";
 import Cart from "./pages/Cart.jsx";
@@ -37,6 +39,9 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/ordersuccess" element={<PaymentLayout />}>
         <Route path="" element={<OrderSuccess />} />
+      </Route>
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route path="" element={<Dashboard />} />
       </Route>
     </>
   )
