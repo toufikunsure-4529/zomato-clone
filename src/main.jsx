@@ -11,7 +11,7 @@ import App from "./App.jsx";
 import AdminLayout from "./AppLayout/AdminLayout.jsx";
 import PaymentLayout from "./AppLayout/PaymentLayout.jsx";
 import Layout from "./Layout.jsx";
-import Dashboard from "./admin/components/Dashboard.jsx";
+import AdminLogin from "./admin/components/AdminLogin.jsx";
 import AddResturant from "./components/Resturant/AddResturant.jsx";
 import "./index.css";
 import Cart from "./pages/Cart.jsx";
@@ -41,7 +41,7 @@ const router = createBrowserRouter(
         <Route path="" element={<OrderSuccess />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
-        <Route path="" element={<Dashboard />} />
+        <Route path="" element={<AdminLogin />} />
       </Route>
     </>
   )
