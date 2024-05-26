@@ -10,7 +10,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 function AdminLogin() {
@@ -21,6 +21,7 @@ function AdminLogin() {
     password: "",
   });
   const [emailError, setEmailError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,6 +36,7 @@ function AdminLogin() {
       toast.success(
         "Authorized Login. But we are still working on the next step."
       );
+      navigate("/home");
     } else {
       toast.warn("You are not authorized or the token is invalid.");
     }

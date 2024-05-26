@@ -8,10 +8,12 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import App from "./App.jsx";
+import AdminHomeLayout from "./AppLayout/AdminHomeLayout.jsx";
 import AdminLayout from "./AppLayout/AdminLayout.jsx";
 import PaymentLayout from "./AppLayout/PaymentLayout.jsx";
 import Layout from "./Layout.jsx";
 import AdminLogin from "./admin/components/AdminLogin.jsx";
+import Dashboard from "./admin/components/Dashboard.jsx";
 import AddResturant from "./components/Resturant/AddResturant.jsx";
 import "./index.css";
 import Cart from "./pages/Cart.jsx";
@@ -41,7 +43,11 @@ const router = createBrowserRouter(
         <Route path="" element={<OrderSuccess />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
-        <Route path="" element={<AdminLogin />} />
+        <Route index element={<AdminLogin />} />
+        <Route path="home" element={<Dashboard />} />
+      </Route>
+      <Route path="/home" element={<AdminHomeLayout />}>
+        <Route path="" element={<Dashboard />} />
       </Route>
     </>
   )
