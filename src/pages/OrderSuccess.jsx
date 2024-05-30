@@ -62,7 +62,7 @@ function OrderSuccess() {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => navigate("/order")}
+            onClick={() => (window.location.href = "/order")}
           >
             Continue Shopping
           </Button>

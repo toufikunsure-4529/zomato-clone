@@ -20,7 +20,9 @@ import Cart from "./pages/Cart.jsx";
 import CreateYourRes from "./pages/CreateYourRes.jsx";
 import OrderOnline from "./pages/OrderOnline.jsx";
 import OrderSuccess from "./pages/OrderSuccess.jsx";
+import OrderView from "./pages/OrderView.jsx";
 import Payment from "./pages/Payment.jsx";
+import Profile from "./pages/Profile.jsx";
 import store from "./store/Store.js";
 
 const router = createBrowserRouter(
@@ -35,6 +37,8 @@ const router = createBrowserRouter(
         />
         <Route path="/order" element={<OrderOnline />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/orderview" element={<OrderView />} />
+        <Route path="/profile" element={<Profile />} />
       </Route>
       <Route path="/payment" element={<PaymentLayout />}>
         <Route path="" element={<Payment />} />

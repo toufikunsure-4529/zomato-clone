@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import dbServices from "../appwrite/DBconfig";
-import Button from "../components/Button";
 import Input from "../components/Input";
 import Loading from "../components/Loading";
 import Container from "../components/container/Container";
+import Button from "@mui/material/Button";
 
 function UpdateAddress() {
   const navigate = useNavigate();
@@ -108,12 +108,14 @@ function UpdateAddress() {
                       <strong>Phone:</strong> {data.phone}
                     </li>
                   </ul>
-                  <button
-                    className="bg-green-500 text-white py-2 px-4 mt-4 rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-opacity-50"
-                    onClick={handleNavigatePay}
+
+                  <Button
+                    variant="contained"
+                    onClick={() => handleNavigatePay()}
                   >
+                    {" "}
                     Use This Address
-                  </button>
+                  </Button>
                 </div>
               ))}
             </div>
@@ -146,9 +148,7 @@ function UpdateAddress() {
                   placeholder="Phone Number"
                   {...register("phone", { required: true })}
                 />
-                <Button bgColor="bg-green-500" className="py-1 mt-2">
-                  Save and Deliver here
-                </Button>
+                <Button variant="outlined">Save and Deliver here</Button>
               </form>
             </div>
           )}

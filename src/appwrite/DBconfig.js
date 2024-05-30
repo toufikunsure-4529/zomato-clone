@@ -40,12 +40,23 @@ export class DatabaseServices {
   }
 
 
-  async createOrder({ orderId, featuredImageId, name, price, quantity, totalPrice, userId }) {
+  async createOrder({ orderId, featuredImageId, name, price, totalPrice, userId, orderStatus = "Order Placed" }) {
     try {
-      return await this.database.createDocument(conf.appwriteDatabaseId, conf.appwriteOrderCollectionId, userId, { orderId, featuredImageId, name, price, quantity, totalPrice, userId })
+      return await this.database.createDocument(conf.appwriteDatabaseId, conf.appwriteOrderCollectionId, ID.unique(), { orderId, featuredImageId, name, price, totalPrice, userId, orderStatus })
+
     }
     catch (error) {
       console.log(error.message)
+    }
+  }
+
+  async getOrder(userId) {
+    try {
+      const response = await this.database.listDocuments(conf.appwriteDatabaseId, conf.appwriteOrderCollectionId, [`equal("userId","${userId}")`])
+      return response
+    } catch (error) {
+      toast.error(error.message);
+      throw error;
     }
   }
 
