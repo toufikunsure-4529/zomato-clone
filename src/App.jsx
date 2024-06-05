@@ -7,7 +7,7 @@ import Getapp from "./components/Getapp";
 import Herosection from "./components/HeroSection/Herosection";
 import Login from "./components/Login";
 import SignupComp from "./components/SignupComp";
-
+//main rendaring app
 function App() {
   return (
     <>
