@@ -1,3 +1,4 @@
+import Button from "@mui/material/Button";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
@@ -7,7 +8,6 @@ import dbServices from "../appwrite/DBconfig";
 import Input from "../components/Input";
 import Loading from "../components/Loading";
 import Container from "../components/container/Container";
-import Button from "@mui/material/Button";
 
 function UpdateAddress() {
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ function UpdateAddress() {
       const updateData = await dbServices.updateUserData(data);
       if (updateData) {
         toast.success("Profile Update Successfully");
+        setUserProfileData((prevData) => [...prevData, updateData])
         reset();
       } else {
         toast.error("Failed to update profile");
@@ -148,7 +149,7 @@ function UpdateAddress() {
                   placeholder="Phone Number"
                   {...register("phone", { required: true })}
                 />
-                <Button variant="outlined">Save and Deliver here</Button>
+                <Button variant="outlined" type="submit">Save and Deliver here</Button>
               </form>
             </div>
           )}
@@ -159,3 +160,7 @@ function UpdateAddress() {
 }
 
 export default UpdateAddress;
+
+
+
+
