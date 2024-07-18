@@ -21,7 +21,8 @@ export class DatabaseServices {
       return await this.database.createDocument(
         conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
-        slug,//slug define appwrite DB and in this method as it is documents id as it is used
+        //slug,//slug define appwrite DB and in this method as it is documents id as it is used
+        slug,
         { deliveryTime, description, foodName, price, resturantAddress, resturantLocality, resturantName, resturantPhone, resturantPincode, status, featuredImageId, userId }
       )
     } catch (error) {
@@ -59,6 +60,24 @@ export class DatabaseServices {
       throw error;
     }
   }
+
+
+  //get order on query user slug id
+
+  async getProducts(slug) {
+    try {
+      const response = await this.database.listDocuments(
+        conf.appwriteDatabaseId,
+        conf.appwriteOrderCollectionId,
+        [`equal("$id", "${slug}")`]
+      );
+      return response;
+    } catch (error) {
+      toast.error(error.message);
+      throw error;
+    }
+  }
+
 
   async getUserData(userId) {
     try {

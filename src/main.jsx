@@ -14,6 +14,7 @@ import PaymentLayout from "./AppLayout/PaymentLayout.jsx";
 import Layout from "./Layout.jsx";
 import AdminLogin from "./admin/components/AdminLogin.jsx";
 import Dashboard from "./admin/components/Dashboard.jsx";
+import ProductDetails from "./components/OrderPages/product-details/ProductDetails.jsx";
 import AddResturant from "./components/Resturant/AddResturant.jsx";
 import "./index.css";
 import Cart from "./pages/Cart.jsx";
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
         />
         <Route path="/order" element={<OrderOnline />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/order/:slug" element={<ProductDetails />} />
         <Route path="/orderview" element={<OrderView />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
