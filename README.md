@@ -33,4 +33,12 @@ Follow these steps to get a local copy of the project up and running on your mac
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your_username/zomatolite.git
+   git clone https://github.com/toufikunsure-4529/zomato-clone.git
+
+2. Navigate to the project directory
+   ```bash
+   cd project_name
+
+3. Install dependencies
+   ```bash
+   npm install 
