@@ -28,6 +28,8 @@ function OrderView() {
       });
   }, []);
 
+  console.log(order)
+
   return (
     <div className="bg-white min-h-screen w-full">
       <div className="bg-red-800 py-3 pb-14"></div>
