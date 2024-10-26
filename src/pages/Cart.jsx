@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import UpdateAddress from "../UserProfile/UpdateAddress";
 import dbServices from "../appwrite/DBconfig";
-import Button from "../components/Button";
+import Button from "../components/common/Button";
 import Container from "../components/container/Container";
 import { removeFromCart } from "../store/cartSlice";
 

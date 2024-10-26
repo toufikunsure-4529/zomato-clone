@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "../container/Container";
+import Container from "../../container/Container";
 function SignupStep() {
   const stepArray = [
     {

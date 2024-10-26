@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import dbServices from "../appwrite/DBconfig";
-import Loading from "../components/Loading";
+import Loading from "../components/common/Loading";
 import OrderAmountSummary from "../components/OrderPages/OrderAmountSummary";
 import Container from "../components/container/Container";
 

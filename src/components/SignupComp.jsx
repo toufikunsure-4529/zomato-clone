@@ -6,9 +6,9 @@ import { toast } from "react-toastify";
 import authServiceAppwrite from "../appwrite/auth";
 import { toggleModal } from "../store/LoginSlice";
 import { toggleSignupModal } from "../store/signupSlice";
-import Button from "./Button";
-import Input from "./Input";
-import Logo from "./Logo";
+import Button from "../components/common/Button";
+import Input from "../components/common/Input";
+import Logo from "../components/common/Logo";
 
 function SignupComp() {
   const navigator = useNavigate();

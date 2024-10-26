@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SearchInputResturant from "../SearchInputResturant";
+import SearchInputResturant from "../common/SearchInputResturant";
 import Container from "../container/Container";
 
 function Order() {

@@ -1,6 +1,6 @@
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import React from "react";
-import Container from "../container/Container";
+import Container from "../../container/Container";
 
 function DocumentsList() {
   const documentsArray = [

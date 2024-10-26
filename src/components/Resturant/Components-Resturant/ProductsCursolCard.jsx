@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick"; //imprt for slider npm install react-slick slick-carousel
 import "slick-carousel/slick/slick-theme.css"; //need to import for slider
 import "slick-carousel/slick/slick.css"; //need to import for slider
-import Container from "../container/Container";
+import Container from "../../container/Container";
 
 function ProductsCursolCard() {
   const ProductCardArray = [

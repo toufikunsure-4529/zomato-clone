@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import dbServices from "../appwrite/DBconfig";
 import OrderViewComponents from "../components/OrderPages/OrderViewProfile/OrderViewComponents";
-import Loading from "../components/Loading";
+import Loading from "../components/common/Loading";
 
 function OrderView() {
   const [order, setOrder] = useState([]);

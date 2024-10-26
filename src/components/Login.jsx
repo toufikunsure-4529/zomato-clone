@@ -7,8 +7,8 @@ import Swal from "sweetalert2";
 import authServiceAppwrite from "../appwrite/auth";
 import { toggleModal } from "../store/LoginSlice";
 import { login as storeLogin } from "../store/authSlice";
-import Button from "./Button";
-import Input from "./Input";
+import Button from "../components/common/Button";
+import Input from "../components/common/Input";
 
 function Login() {
   const modalIsOpen = useSelector((state) => state.login.modalIsOpen);

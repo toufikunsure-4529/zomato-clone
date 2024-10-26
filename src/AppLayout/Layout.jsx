@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import authServiceAppwrite from "./appwrite/auth";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Loading from "./components/Loading";
-import { login as storeLogin } from "./store/authSlice";
+import authServiceAppwrite from "../appwrite/auth";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import Loading from "../components/common/Loading";
+import { login as storeLogin } from "../store/authSlice";
 function Layout() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);

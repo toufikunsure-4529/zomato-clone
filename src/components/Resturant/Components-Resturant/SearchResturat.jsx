@@ -1,6 +1,6 @@
 import React from "react";
-import SearchInputResturant from "../SearchInputResturant";
-import Container from "../container/Container";
+import SearchInputResturant from "../../common/SearchInputResturant";
+import Container from "../../container/Container";
 
 function SearchResturat() {
   return (

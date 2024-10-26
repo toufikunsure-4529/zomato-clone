@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../Button";
-import Container from "../container/Container";
+import Button from "../../common/Button";
+import Container from "../../container/Container";
 
 function ResturantHeroSection() {
   const navigate = useNavigate();

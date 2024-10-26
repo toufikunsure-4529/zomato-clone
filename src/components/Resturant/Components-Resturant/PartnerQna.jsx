@@ -4,7 +4,7 @@ import {
   GlobeAmericasIcon,
 } from "@heroicons/react/24/solid";
 import React from "react";
-import Container from "../container/Container";
+import Container from "../../container/Container";
 
 function PartnerQna() {
   const businessInfoArray = [

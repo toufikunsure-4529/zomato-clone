@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../Button";
-import Container from "../container/Container";
+import Button from "../../common/Button";
+import Container from "../../container/Container";
 
 function StartJurney() {
   return (

@@ -5,8 +5,8 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import dbServices from "../appwrite/DBconfig";
-import Input from "../components/Input";
-import Loading from "../components/Loading";
+import Input from "../components/common/Input";
+import Loading from "../components/common/Loading";
 import Container from "../components/container/Container";
 
 function UpdateAddress() {

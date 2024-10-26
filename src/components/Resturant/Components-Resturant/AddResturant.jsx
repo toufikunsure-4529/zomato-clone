@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../../App.css";
+import "../../../App.css";
 import BugIssueForm from "./BugIssueForm";
 import Clients from "./Clients";
 import DocumentsList from "./DocumentsList";

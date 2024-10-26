@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Button from "../Button";
-import Input from "../Input";
-import Container from "../container/Container";
+import Button from "../../common/Button";
+import Input from "../../common/Input";
+import Container from "../../container/Container";
 
 function BugIssueForm() {
   const { register, handleSubmit, reset } = useForm();

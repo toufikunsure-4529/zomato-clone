@@ -3,14 +3,15 @@ import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import dbServices from "../../../appwrite/DBconfig";
-import Button from "../../Button";
-import Input from "../../Input";
+import Button from "../../common/Button";
+import Input from "../../common/Input";
 
 function FormAddRes() {
   const [isCoordinates, setIsCoordinates] = useState(false);
   const { register, handleSubmit, reset, watch, setValue } = useForm();
   const userData = useSelector((state) => state.auth.userData);
   const [loading, setLoading] = useState(false);
+  const [locality, setLocality] = useState("");
 
   const addToSubmitData = async (data) => {
     setLoading(true);
@@ -20,7 +21,6 @@ function FormAddRes() {
       return;
     }
 
-    // Validation check
     if (!data.foodName || !data.description || !data.price) {
       toast.error("Please fill out all required fields");
       setLoading(false);
@@ -28,23 +28,16 @@ function FormAddRes() {
     }
 
     try {
-      // Attempt to upload the image if provided
       const file = data.image[0]
         ? await dbServices.uploadFoodImg(data.image[0])
         : null;
+
       if (file) {
-        const fileId = file.$id; //to set userCreate time id as image id future to find who uploaded
-        data.featuredImageId = fileId;
-
-        // Add new food entry to the database
-        const newFoodData = {
-          ...data,
-          userId: userData.$id,
-        };
-
+        const newFoodData = { ...data, userId: userData.$id, featuredImageId: file.$id };
         const AddNewFood = await dbServices.createResturant(newFoodData);
+
         if (AddNewFood) {
-          toast.success("Your Food Added", newFoodData.foodName);
+          toast.success(`"${data.foodName}" added successfully`);
           reset();
         }
       }
@@ -57,174 +50,148 @@ function FormAddRes() {
   };
 
   const slugTransform = useCallback((value) => {
-    if (value && typeof value === "string") {
-      return value.trim().toLowerCase().replace(/ /g, "-");
-    }
-    return "";
+    return value ? value.trim().toLowerCase().replace(/ /g, "-") : "";
   }, []);
 
   useEffect(() => {
     const subscription = watch((value, { name }) => {
       if (name === "foodName") {
-        setValue("slug", slugTransform(value.foodName), {
-          shouldValidate: true,
-        });
+        setValue("slug", slugTransform(value.foodName), { shouldValidate: true });
       }
     });
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
-  const [locality, setLocality] = useState("");
 
   return (
-    <div className="w-full bg-white">
-      <div className="w-full h-auto mt-10 border px-6 py-7 flex flex-col gap-3 justify-center">
-        <h3 className="text-gray-950 text-xl font-semibold">
-          Resturant details
-        </h3>
-        <p className="text-sm text-gray-400">Name, address and location</p>
-        <form
-          onSubmit={handleSubmit(addToSubmitData)}
-          className="flex flex-col gap-3"
-        >
+    <div className="max-w-3xl mx-auto my-10 p-8 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Restaurant & Product Details</h2>
+
+      <form onSubmit={handleSubmit(addToSubmitData)} className="space-y-6">
+        {/* Restaurant Information Section */}
+        <div className="grid md:grid-cols-2 gap-6">
           <Input
-            placeholder="resturant Name"
+            label="Restaurant Name"
+            placeholder="Enter restaurant name"
             {...register("resturantName", { required: true })}
           />
           <Input
-            placeholder="resturant Complete address"
+            label="Complete Address"
+            placeholder="Enter full address"
             {...register("resturantAddress", { required: true })}
           />
-          <div className="px-2 py-1 border border-yellow-700 bg-yellow-50 text-yellow-600 text-sm rounded">
-            Please ensure this is same as the address on your FSSAI document (if
-            applicable)
-          </div>
           <Input
-            placeholder="Enter your resturant's locality, e.g., sector 43"
-            {...register("resturantLocality", { required: true })}
+            label="Locality"
+            placeholder="e.g., sector 43"
             value={locality}
             onChange={(e) => setLocality(e.target.value)}
+            {...register("resturantLocality", { required: true })}
           />
-          <div className="md:w-full w-full h-96 py-2 px-2 md:py-0 md:px-0">
-            <iframe
-              width="100%"
-              height="100%"
-              className="rounded-sm"
-              src={`https://maps.google.com/maps?q=${locality}&output=embed`}
-              style={{
-                filter: "grayscale(0) contrast(1.2) opacity(100%)",
-              }}
-            ></iframe>
+          <iframe
+            width="100%"
+            height="200"
+            className="rounded-lg"
+            src={`https://maps.google.com/maps?q=${locality}&output=embed`}
+            style={{ filter: "grayscale(0) contrast(1.2) opacity(100%)" }}
+          ></iframe>
+        </div>
+
+        {/* Optional Coordinates Section */}
+        <p
+          className="text-right text-blue-500 cursor-pointer hover:underline"
+          onClick={() => setIsCoordinates(!isCoordinates)}
+        >
+          {isCoordinates ? "Hide Coordinates" : "Enter Coordinates"}
+        </p>
+        {isCoordinates && (
+          <div className="grid grid-cols-2 gap-6">
+            <Input
+              label="Latitude"
+              placeholder="Enter latitude"
+              {...register("latitude")}
+            />
+            <Input
+              label="Longitude"
+              placeholder="Enter longitude"
+              {...register("longitude")}
+            />
           </div>
-          <p
-            className="text-right text-blue-500 hover:underline cursor-pointer"
-            onClick={() => setIsCoordinates(!isCoordinates)}
+        )}
+
+        {/* Address Details */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <select
+            className="border rounded-lg px-4 py-2"
+            {...register("country", { required: true })}
           >
-            or directly enter the coordinates
-          </p>
-          {isCoordinates && (
-            <div className="flex gap-9">
-              <Input
-                placeholder="Enter valid latitude"
-                {...register("latitude")}
-              />
-              <Input
-                placeholder="Enter valid longitude"
-                {...register("longitude")}
-              />
-            </div>
-          )}
-          <h3 className="text-gray-950 text-xl font-semibold">
-            resturant address details
-          </h3>
-          <p className="text-sm text-gray-400">
-            Address details are based on the resturant location mentioned above
-          </p>
-          <div className="flex gap-10">
-            <select
-              name="country"
-              id="country"
-              className="w-60 border border-gray-200 rounded-lg text-gray-400 px-5"
-              {...register("country", { required: true })}
-            >
-              <option value="India">India</option>
-            </select>
-            <Input
-              placeholder="Enter Pincode"
-              {...register("resturantPincode", { required: true })}
-            />
-          </div>
-          <h3 className="text-gray-950 md:text-xl text-sm font-semibold">
-            Contact number at resturant
-          </h3>
-          <p className="text-sm text-gray-400">
-            Your customers will call on this number for general inquiries
-          </p>
-          <div className="flex md:gap-10 gap-2 md:flex-row flex-col">
-            <Input
-              placeholder="Mobile number at resturant"
-              {...register("resturantPhone", { required: true })}
-            />
-            <Button
-              className="px-14 cursor-not-allowed"
-              bgColor="bg-gray-300"
-              disabled
-            >
-              Verify
-            </Button>
-          </div>
-          <h2 className="text-center text-xl font-semibold underline text-green-600">
-            Add Product
-          </h2>
-          <div className="grid md:grid-cols-2 grid-cols-1 justify-center items-center gap-3 border px-4 py-5 rounded bg-gray-100">
-            <Input
-              placeholder="Food Name"
-              {...register("foodName", { required: true })}
-            />
-            <Input
-              placeholder="Slug"
-              className="cursor-not-allowed"
-              readOnly
-              {...register("slug", { required: true })}
-              onInput={(e) => {
-                setValue("slug", slugTransform(e.target.value), {
-                  shouldValidate: true,
-                });
-              }}
-            />
-            <Input
-              placeholder="Price"
-              {...register("price", { required: true })}
-            />
-            <Input
-              placeholder="Description"
-              {...register("description", { required: true })}
-            />
-            <Input
-              placeholder="Delivery Time"
-              {...register("deliveryTime", { required: true })}
-            />
-            <Input
-              type="file"
-              {...register("image", { required: true })}
-              accept="image/png, image/jpg, image/jpeg, image/gif"
-            />
-            <select
-              name="status"
-              id="status"
-              className="py-2 px-2 outline-none rounded"
-              {...register("status", { required: true })}
-            >
-              <option value="available">Available Stock</option>
-              <option value="unavailable">Out of Stock</option>
-            </select>
-          </div>
-          <Button className="px-14 mt-6 md:w-1/3 w-full">
-            {loading ? "Please wait..." : "Submit"}
-          </Button>
-        </form>
-      </div>
+            <option value="India">India</option>
+          </select>
+          <Input
+            label="Pincode"
+            placeholder="Enter pincode"
+            {...register("resturantPincode", { required: true })}
+          />
+        </div>
+
+        {/* Contact Number */}
+        <Input
+          label="Restaurant Contact Number"
+          placeholder="Enter contact number"
+          {...register("resturantPhone", { required: true })}
+        />
+
+        {/* Product Information Section */}
+        <h3 className="text-xl font-semibold text-green-600 text-center underline">Add Product</h3>
+        <div className="grid md:grid-cols-2 gap-6">
+          <Input
+            label="Food Name"
+            placeholder="Enter food name"
+            {...register("foodName", { required: true })}
+          />
+          <Input
+            label="Slug"
+            placeholder="Slug"
+            readOnly
+            className="cursor-not-allowed"
+            {...register("slug", { required: true })}
+          />
+          <Input
+            label="Price"
+            placeholder="Enter price"
+            {...register("price", { required: true })}
+          />
+          <Input
+            label="Description"
+            placeholder="Enter description"
+            {...register("description", { required: true })}
+          />
+          <Input
+            label="Delivery Time"
+            placeholder="Enter delivery time"
+            {...register("deliveryTime", { required: true })}
+          />
+          <Input
+            type="file"
+            label="Upload Image"
+            accept="image/png, image/jpg, image/jpeg, image/gif"
+            {...register("image", { required: true })}
+          />
+          <select
+            className="border rounded-lg px-4 py-2"
+            {...register("status", { required: true })}
+          >
+            <option value="available">Available Stock</option>
+            <option value="unavailable">Out of Stock</option>
+          </select>
+        </div>
+
+        {/* Submit Button */}
+        <Button
+          type="submit"
+          className="w-full mt-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+        >
+          {loading ? "Please wait..." : "Submit"}
+        </Button>
+      </form>
     </div>
   );
 }

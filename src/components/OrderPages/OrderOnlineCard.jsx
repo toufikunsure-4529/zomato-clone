@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import dbServices from "../../appwrite/DBconfig";
 import { addToCart } from "../../store/cartSlice";
-import Loading from "../Loading";
+import Loading from "../common/Loading";
 import Container from "../container/Container";
 
 function OrderOnlineCard() {
@@ -33,9 +33,9 @@ function OrderOnlineCard() {
     } else {
       dispatch(addToCart({ price, foodName, featuredImageId }));
       toast.success("Cart added Successfully");
-      setTimeout(() => {
-        navigate("/cart");
-      }, 2000);
+      // setTimeout(() => {
+      //   navigate("/cart");
+      // }, 2000);
     }
   };
   console.log(foodData)
@@ -52,7 +52,6 @@ function OrderOnlineCard() {
           ) : (
             <div className="grid md:grid-cols-3 grid-cols-1 md:gap-5 gap-2">
               {foodData.map((data, index) => (
-                <Link to={data.$id} >
                   <div
                     className={`border border-gray-50 hover:border-gray-200 overflow-hidden rounded-xl hover:shadow-xl w-full md:w-80 h-auto px-3 py-3 ${data.status === "unavailable"
                       ? "pointer-events-none grayscale"
@@ -114,7 +113,6 @@ function OrderOnlineCard() {
                       </div>
                     </div>
                   </div>
-                </Link>
 
               ))}
 

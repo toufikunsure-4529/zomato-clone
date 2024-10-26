@@ -1,6 +1,6 @@
 import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
-import Container from "../container/Container";
+import Container from "../../container/Container";
 
 function ResturantFaq() {
   const FaqArray = [

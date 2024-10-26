@@ -1,7 +1,7 @@
 import { MapPinIcon } from "@heroicons/react/24/solid";
 
 import React from "react";
-import SearchInputResturant from "../SearchInputResturant";
+import SearchInputResturant from "../common/SearchInputResturant";
 
 function Herosection() {
   return (
