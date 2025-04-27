@@ -11,7 +11,7 @@ function FormAddRes() {
   const { register, handleSubmit, reset, watch, setValue } = useForm();
   const userData = useSelector((state) => state.auth.userData);
   const [loading, setLoading] = useState(false);
-  const [locality, setLocality] = useState("");
+  const [locality, setLocality] = useState(null)
 
   const addToSubmitData = async (data) => {
     setLoading(true);
